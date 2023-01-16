@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: "homes#top"
   get "homes/about" => "homes#about",as: "about"
-  devise_for :users
+  devise_for :users do
+   get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+  resources :users, only: [:create,:index,:show,:edit,:destroy]
+  resources :books, only: [:index,:show,:edit,:update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
