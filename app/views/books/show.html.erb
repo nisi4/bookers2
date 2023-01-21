@@ -51,16 +51,21 @@
           <td>
            <%= book.body %>
           </td>
-          <td>
-           <%= link_to edit_user_path(book.user_id) do %>
-            <button type="button" class="btn btn-success btn-sm">Edit</button>
-           <% end %>
-          </td>
-          <td>
-           <%= link_to book_path(book.id),method: :delete do %>
-            <button type="button" class="btn btn-danger btn-sm">destroy</button>
-           <% end %>
-          </td>
+          <% if book.user_id == current_user.id %>
+              <td>
+               <%= link_to edit_book_path(book.id) do %>
+                <button type="button" class="btn btn-success btn-sm">Edit</button>
+               <% end %>
+              </td>
+              <td>
+               <%= link_to book_path(book.id),method: :delete do %>
+                <button type="button" class="btn btn-danger btn-sm">destroy</button>
+               <% end %>
+              </td>
+          <% else %>
+              <td></td>
+              <td></td>
+          <% end %>
         </tr>
         <% end %>
        </tbody>
