@@ -1,36 +1,10 @@
 <div class="container px-5 px-sm-0">
   <div class="row">
     <div class="col-md-3">
-      <h2>User info</h2>
-      <%= image_tag current_user.get_profile_image(100,100) %>
-      <table class="table">
-        <tr>
-          <th>name</th>
-          <th><%= current_user.name %></th>
-        </tr>
-        <tr>
-          <th>introduction</th>
-          <th><%= current_user.introduction %></th>
-        </tr>
-      </table>
-  <div class="row">
-    <%= link_to edit_user_path(:id),class: "btn btn-outline-secondary btn-block" do %>
-      <i class="fas fa-user-cog"></i>
-    <% end %>
-  </div>
-      <h2>New Book</h2>
-      <%= form_with model: @book,url: books_path,method: :post do |f| %>
-      
-      <%= f.label :title %><br>
-      <%= f.text_field :title,style: "width:100%" %><br>
-      
-      <%= f.label :opinion %><br>
-      <%= f.text_area :body,style: "width:100%" %><br>
-      
-      <input type="submit" value="Create Book" class="btn btn-success">
-        
-      <% end %>
+     <%= render "list",book: @book,user: @user %>
+
     </div>
+    
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
