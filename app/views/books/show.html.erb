@@ -29,8 +29,8 @@
                <% end %>
               </td>
               <td>
-               <%= link_to book_path(@books.id),method: :delete do %>
-                <button type="button" class="btn btn-danger btn-sm">destroy</button>
+               <%= link_to book_path(@books.id),method: :delete,"data-confirm" => "本当に削除しますか？" do %>
+                <button type="button" class="btn btn-danger btn-sm">Destroy</button>
                <% end %>
               </td>
           <% else %>
